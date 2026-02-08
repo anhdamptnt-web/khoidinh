@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cao Đình Khôi</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+overflow:hidden;
+background:black;
+}
+
+/* VIDEO NỀN */
+.bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+filter:brightness(0.45) contrast(1.1);
+}
+
+/* OVERLAY XÁM ĐEN */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+rgba(0,0,0,0.65),
+rgba(20,20,20,0.75)
+);
+z-index:-1;
+backdrop-filter:blur(6px);
+}
+
+/* MAIN CARD */
+.container{
+width:90%;
+max-width:520px;
+
+background:rgba(40,40,40,0.35);
+backdrop-filter:blur(18px);
+
+border-radius:22px;
+padding:40px;
+
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 20px 50px rgba(0,0,0,0.7);
+
+text-align:center;
+}
+
+/* AVATAR FRAME */
+.avatar-frame{
+width:130px;
+height:130px;
+margin:0 auto 22px;
+padding:3px;
+border-radius:50%;
+background:linear-gradient(135deg,#999,#333);
+}
+
+.avatar{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+}
+
+/* NAME */
+.name{
+font-size:30px;
+font-weight:600;
+letter-spacing:0.5px;
+margin-bottom:14px;
+}
+
+/* INFO */
+.info{
+opacity:0.85;
+line-height:1.6;
+font-size:16px;
+margin-bottom:25px;
+}
+
+/* DIVIDER */
+.line{
+width:100%;
+height:1px;
+background:rgba(255,255,255,0.12);
+margin-bottom:20px;
+}
+
+/* MUSIC */
+.music-title{
+font-size:17px;
+margin-bottom:12px;
+opacity:0.9;
+}
+
+iframe{
+width:100%;
+height:152px;
+border:none;
+border-radius:14px;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+.container{
+padding:30px;
+}
+.avatar-frame{
+width:110px;
+height:110px;
+}
+.name{
+font-size:24px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO NỀN -->
+<video class="bg-video" autoplay loop playsinline muted id="bgVideo">
+<source src="bg.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- NHẠC NỀN RIÊNG -->
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<!-- AVATAR -->
+<div class="avatar-frame">
+<img src="images/khoi.jpg" class="avatar">
+</div>
+
+<div class="name">Cao Đình Khôi</div>
+
+<div class="info">
+Sinh: 22/11/2008<br>
+Học sinh THPTDX<br>
+Sở thích: Game, Tia Gái
+</div>
+
+<div class="line"></div>
+
+<div class="music-title">Bài hát yêu thích</div>
+
+<!-- Spotify -->
+<iframe src="https://open.spotify.com/embed/track/ID_NHAC_O_DAY"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy"></iframe>
+
+</div>
+
+<script>
+/* Click lần đầu để bật nhạc nền */
+document.addEventListener("click",()=>{
+document.getElementById("bgMusic").play().catch(()=>{});
+},{once:true});
+</script>
+
+</body>
+</html>
